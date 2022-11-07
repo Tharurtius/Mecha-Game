@@ -4,20 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "Melee", menuName = "ScriptableObjects/Melee")]
-public class Melee : ScriptableObject, IWeapon
+public class Melee : IWeapon
 {
-    [SerializeField] private Image image;//image shown to player in the menu
-    [SerializeField] private GameObject model;//actual model in game
-    [SerializeField] private string name;//name shown to player in the menu
-
-    private GameObject hitbox;//hitbox of the weapon swing
-    public void Attack()
+    //turn on melee hitbox/model for a certain amount of time, turn it off afterwards
+    public override void Attack(Transform origin)
     {
-        
-    }
-
-    public void Spawn(Transform parent)
-    {
-        model = Instantiate(model, parent);
+        GameObject swing = Instantiate(hitbox, origin);//parent hitbox to player to make weapon swing follow player
+        Destroy(swing, 0.5f);//destroy after 0.5 seconds
     }
 }

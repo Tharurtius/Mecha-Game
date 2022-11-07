@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 608e5fb88d6bba14ca6a5134e7ed8b9e, type: 3}
+  m_Name: Plasma Rifle
+  m_EditorClassIdentifier: 
+  weaponName: Plasma Rifle
+  sprite: {fileID: 21300000, guid: 2cb6477e2f56748409dbb6712ce5df10, type: 3}
+  model: {fileID: 7396707127974940261, guid: 5607995fbffd6a34abdf553e3cb48122, type: 3}
+  hitbox: {fileID: 2016394442119431409, guid: 59f4009279bb76f4d8794d6e87d48ec9, type: 3}
+  cooldown: 0.2
+  lifeTime: 5
