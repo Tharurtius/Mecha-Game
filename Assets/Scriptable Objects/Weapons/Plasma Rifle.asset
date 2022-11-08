@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Plasma Rifle
   m_EditorClassIdentifier: 
   weaponName: Plasma Rifle
-  sprite: {fileID: 21300000, guid: 2cb6477e2f56748409dbb6712ce5df10, type: 3}
+  sprite: {fileID: 21300000, guid: 4369303b79813aa4c9729884cb133ec9, type: 3}
   model: {fileID: 7396707127974940261, guid: 5607995fbffd6a34abdf553e3cb48122, type: 3}
   hitbox: {fileID: 2016394442119431409, guid: 59f4009279bb76f4d8794d6e87d48ec9, type: 3}
   cooldown: 0.2
-  lifeTime: 5
+  lifeTime: 10
