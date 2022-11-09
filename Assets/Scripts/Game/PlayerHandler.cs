@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -8,7 +9,6 @@ public class PlayerHandler : MonoBehaviour
     [SerializeField] private float speed = 5;
     [SerializeField] private IWeapon _weapon;
     [SerializeField] private float cooldown = 0;
-    [SerializeField] private Camera mainCam = Camera.main;
 
     public IWeapon Weapon
     {
@@ -41,17 +41,20 @@ public class PlayerHandler : MonoBehaviour
     private void Move(Vector3 vector)
     {
         transform.Translate(vector * speed * Time.deltaTime);
+        
+        Vector3 edge = transform.position;
+        edge.z = Mathf.Clamp(edge.z, -GameManager.edgeZ, GameManager.edgeZ);
+        edge.x = Mathf.Clamp(edge.x, GameManager.edgeX, -GameManager.edgeX);
+        transform.position = edge;
+    }
 
-        //move position back towards center of screen
-        Debug.Log(Camera.main.WorldToViewportPoint(transform.position));
-        Vector3 edge = Camera.main.WorldToViewportPoint(transform.position);
-        Vector3 initialPos = edge;
-        edge.x = Mathf.Clamp(edge.x, 0.1f, 0.9f);
-        edge.y = Mathf.Clamp(edge.y, 0.1f, 0.9f);
-        //Debug.Log(edge);
-        if (edge.x != initialPos.x || edge.y != initialPos.y)
-        {
-            transform.position = Camera.main.ViewportToWorldPoint(edge);
-        }
+    private void OnDestroy()
+    {
+        GameManager.living.Remove(gameObject);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log(collision.gameObject.name);
     }
 }

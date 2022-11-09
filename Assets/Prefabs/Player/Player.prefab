@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5482052293508320138}
   - component: {fileID: 5482052293508320139}
+  - component: {fileID: 5105205875021537778}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -46,6 +47,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  _weapon: {fileID: 0}
+  cooldown: 0
+--- !u!136 &5105205875021537778
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5482052293508320136}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2.7
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &5156759254850858376
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -181,7 +198,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mecha
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 829881399403346357, guid: c632bcf0ec4dc6048a8bdceb8b5b093c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c632bcf0ec4dc6048a8bdceb8b5b093c, type: 3}
 --- !u!4 &5482052293743612986 stripped
 Transform:
