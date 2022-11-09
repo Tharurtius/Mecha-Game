@@ -10,7 +10,7 @@ public class Guns : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        countdown += UnityEngine.Random.Range(-3f, 3f);
     }
 
     // Update is called once per frame
@@ -19,7 +19,7 @@ public class Guns : MonoBehaviour
         countdown -= Time.deltaTime;
         if (countdown <= 0)
         {
-            countdown = bullet.cooldown;
+            countdown += bullet.cooldown + UnityEngine.Random.Range(-3f, 3f);
             bullet.Attack(transform);
         }
     }

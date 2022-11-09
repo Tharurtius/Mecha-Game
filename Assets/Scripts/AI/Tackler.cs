@@ -5,20 +5,21 @@ using UnityEngine;
 
 public class Tackler : MonoBehaviour
 {
-    public Transform goal;
+    public Vector3 goal;
     [SerializeField] private float speed = 5f;
     // Start is called before the first frame update
     void Start()
     {
-        goal = GameManager.living[0].transform;
+        goal = GameManager.living[0].transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
         CloserPlayer();
-        transform.forward = goal.position - transform.position;
+        transform.forward = goal - transform.position;
         transform.position += transform.forward * Time.deltaTime * speed;
+        speed += Time.deltaTime;
     }
 
     void CloserPlayer()
@@ -26,10 +27,23 @@ public class Tackler : MonoBehaviour
         float distance = float.PositiveInfinity;
         foreach (GameObject player in GameManager.living)
         {
-            if (distance < Vector3.Distance(player.transform.position, transform.position))
+            if (distance > Vector3.Distance(player.transform.position, transform.position))
             {
-                goal = player.transform;
+                goal = player.transform.position;
+                distance = Vector3.Distance(player.transform.position, transform.position);
             }
+        }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.tag == "Sword")
+        {
+            Destroy(gameObject);
+        }
+        else if (collision.transform.tag == "PlayerAttack")
+        {
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
         }
     }
 }

@@ -22,4 +22,17 @@ public class Shooter : MonoBehaviour
         float z = transform.position.z;
         transform.position = new Vector3(initialX + Mathf.Sin(timePassed) * distance, 0, Mathf.Max(GameManager.edgeZ, z - 0.005f));
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.tag == "Sword")
+        {
+            Destroy(gameObject);
+        }
+        else if (collision.transform.tag == "PlayerAttack")
+        {
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+        }
+    }
 }

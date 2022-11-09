@@ -14,6 +14,15 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(transform.forward * speed * Time.deltaTime);
+        transform.Translate(transform.forward * speed * Time.deltaTime);//move forward at speed
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (transform.tag == "EnemyAttack" && collision.transform.tag == "Sword")
+        {
+            transform.tag = "PlayerAttack";//turn into player attack
+            transform.forward = collision.transform.root.position - transform.position;//flies as an angle away from the sword
+        }
     }
 }

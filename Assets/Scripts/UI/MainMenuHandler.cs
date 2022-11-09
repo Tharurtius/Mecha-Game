@@ -28,7 +28,8 @@ public class MainMenuHandler : ISceneSwap
     // Start is called before the first frame update
     void Start()
     {
-        
+        Application.targetFrameRate = 60;
+        Time.timeScale = 1f;
     }
 
     // Update is called once per frame

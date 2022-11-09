@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerHandler : MonoBehaviour
@@ -9,6 +8,7 @@ public class PlayerHandler : MonoBehaviour
     [SerializeField] private float speed = 5;
     [SerializeField] private IWeapon _weapon;
     [SerializeField] private float cooldown = 0;
+    [SerializeField] private Controls playerControls;
 
     public IWeapon Weapon
     {
@@ -28,9 +28,11 @@ public class PlayerHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 vector = new Vector3(-Input.GetAxis("Vertical"), 0, Input.GetAxis("Horizontal"));
+        float vertical = Convert.ToSingle(Input.GetKey(playerControls.down)) - Convert.ToSingle(Input.GetKey(playerControls.up));
+        float horizontal = Convert.ToSingle(Input.GetKey(playerControls.right)) - Convert.ToSingle(Input.GetKey(playerControls.left));
+        Vector3 vector = new Vector3(vertical, 0, horizontal);
         Move(vector);
-        if (Input.GetButton("Fire1") && cooldown <= 0)
+        if (Input.GetKey(playerControls.fire) && cooldown <= 0)
         {
             _weapon.Attack(transform);
             cooldown = _weapon.cooldown;
@@ -55,6 +57,9 @@ public class PlayerHandler : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.gameObject.name);
+        if (collision.transform.tag == "EnemyAttack" || collision.transform.tag == "Poison")
+        {
+            Destroy(gameObject);
+        }
     }
 }

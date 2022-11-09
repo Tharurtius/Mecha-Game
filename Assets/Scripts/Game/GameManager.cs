@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,8 +17,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject[] enemies;
     [SerializeField] private float spawnCooldown = 10;//how long until next spawn
     [SerializeField] private float spawnCountdown = 0;//actual counter
-    [SerializeField] private int spawnNumber = 3;//how many spawns
+    [SerializeField] private int spawnNumber = 10;//how many spawns
     public static List<GameObject> living;
+
+    [SerializeField] private GameObject pausePanel;
+    [SerializeField] private TextMeshProUGUI displayText;
+    [SerializeField] private GameObject resumeButton;
 
     // Start is called before the first frame update
     void Awake()
@@ -38,7 +44,7 @@ public class GameManager : MonoBehaviour
         Vector3 edge = mainCam.ViewportToWorldPoint(new Vector3(0.95f, 0.9f, 30f));
         edgeX = edge.x;
         edgeZ = edge.z;
-        spawnEdge = edgeZ + 10;
+        spawnEdge = edgeZ + 4.2f;
     }
 
     // Update is called once per frame
@@ -48,9 +54,15 @@ public class GameManager : MonoBehaviour
         if (spawnCountdown <= 0)
         {
             spawnCooldown *= 0.9f;
+            spawnCooldown = Math.Max(spawnCooldown, 1);
             spawnCountdown += spawnCooldown;
             SpawnEnemies(spawnNumber);
-            spawnNumber += Math.Clamp(Random.Range(-8, 1), 0, 1);//10% chance to add more to spawn number
+            spawnNumber += Math.Clamp(Random.Range(-3, 1), 0, 1);//20% chance to add more to spawn number
+        }
+
+        if (living.Count == 0)
+        {
+            EndGame();
         }
     }
 
@@ -59,9 +71,17 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < number; i++)
         {
             int random = Random.Range(0, enemies.Length);
-            GameObject enemy = Instantiate(enemies[random],//choose random enemy
+            Instantiate(enemies[random],//choose random enemy
                 new Vector3(Random.Range(-edgeX, edgeX), 0, spawnEdge),//spawn anywhere on the edge
                 Quaternion.Euler(0, 180, 0));//rotate towards other end of field
         }
+    }
+
+    void EndGame()
+    {
+        pausePanel.SetActive(true);
+        displayText.text = "You Died";
+        resumeButton.SetActive(false);
+        Time.timeScale = 0f;
     }
 }
