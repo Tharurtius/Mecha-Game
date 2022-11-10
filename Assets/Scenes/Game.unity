@@ -354,6 +354,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: ISceneSwap, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &96779692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -705,6 +717,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a2560e537365614c9ed186fccb0a250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerOneControls: {fileID: 0}
+  playerTwoControls: {fileID: 0}
 --- !u!114 &1101716844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -730,6 +744,7 @@ MonoBehaviour:
   pausePanel: {fileID: 1562944378}
   displayText: {fileID: 2099339396}
   resumeButton: {fileID: 220040534}
+  explosion: {fileID: 5410239879209951602, guid: 60c9395d8fce79543865303a9deaa59f, type: 3}
 --- !u!1 &1258992290
 GameObject:
   m_ObjectHideFlags: 0

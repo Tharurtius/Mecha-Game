@@ -24,6 +24,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI displayText;
     [SerializeField] private GameObject resumeButton;
 
+    [SerializeField] private GameObject explosion;
+    public static GameObject explode;
+    
     // Start is called before the first frame update
     void Awake()
     {
@@ -45,6 +48,8 @@ public class GameManager : MonoBehaviour
         edgeX = edge.x;
         edgeZ = edge.z;
         spawnEdge = edgeZ + 4.2f;
+
+        explode = explosion;
     }
 
     // Update is called once per frame
@@ -83,5 +88,19 @@ public class GameManager : MonoBehaviour
         displayText.text = "You Died";
         resumeButton.SetActive(false);
         Time.timeScale = 0f;
+    }
+
+    public void PauseUnPause()
+    {
+        if (Time.timeScale == 1f)//if running
+        {
+            pausePanel.SetActive(true);
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            pausePanel.SetActive(false);
+            Time.timeScale = 1f;
+        }
     }
 }

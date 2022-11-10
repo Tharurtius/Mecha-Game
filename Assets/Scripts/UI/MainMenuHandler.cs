@@ -18,6 +18,9 @@ public class MainMenuHandler : ISceneSwap
     [SerializeField] private Image playerOneDisplay;
     [SerializeField] private Image playerTwoDisplay;
 
+    [SerializeField] private TextMeshProUGUI playerOneInstructions;
+    [SerializeField] private TextMeshProUGUI playerTwoInstructions;
+
     [SerializeField] private Image playerOneBackground;
     [SerializeField] private Image playerTwoBackground;
 
@@ -40,27 +43,29 @@ public class MainMenuHandler : ISceneSwap
         {
             if(playerOneWeapon == null)//if no weapon selected
             {
-                if(Input.GetKeyDown(KeyCode.A))//if left is pressed
+                if(Input.GetKeyDown(playerOneControls.left))//if left is pressed
                 {
                     ChangeWeapon(false, ref playerOneIndex);
                 }
-                if(Input.GetKeyDown(KeyCode.D))//if right is pressed
+                if(Input.GetKeyDown(playerOneControls.right))//if right is pressed
                 {
                     ChangeWeapon(true, ref playerOneIndex);
                 }
             }
             
-            if(Input.GetKeyDown(KeyCode.Space))//if space is pressed
+            if(Input.GetKeyDown(playerOneControls.fire))//if space is pressed
             {
                 if(playerOneWeapon == null)//if no weapon is selected
                 {
                     SelectWeapon(0);
                     playerOneBackground.color = red;
+                    playerOneInstructions.text = "Weapon Selected";
                 }
                 else
                 {
                     playerOneWeapon = null;
                     playerOneBackground.color = white;
+                    playerOneInstructions.text = "Select your weapon";
                 }
             }
         }
@@ -70,32 +75,35 @@ public class MainMenuHandler : ISceneSwap
         {
             if(playerTwoWeapon == null)//if no weapon selected
             {
-                if(Input.GetKeyDown(KeyCode.J))//if left is pressed
+                if(Input.GetKeyDown(playerTwoControls.left))//if left is pressed
                 {
                     ChangeWeapon(false, ref playerTwoIndex);
                 }
-                if(Input.GetKeyDown(KeyCode.L))//if right is pressed
+                if(Input.GetKeyDown(playerTwoControls.right))//if right is pressed
                 {
                     ChangeWeapon(true, ref playerTwoIndex);
                 }
             }
             
-            if(Input.GetKeyDown(KeyCode.RightControl))//if space is pressed
+            if(Input.GetKeyDown(playerTwoControls.fire))//if space is pressed
             {
                 if(playerTwoWeapon == null)//if no weapon is selected
                 {
                     SelectWeapon(1);
                     playerTwoBackground.color = red;
+                    playerTwoInstructions.text = "Weapon Selected";
                 }
                 else
                 {
                     playerTwoWeapon = null;
                     playerTwoBackground.color = white;
+                    playerTwoInstructions.text = "Select your weapon";
                 }
             }
         }
     }
 
+    //resets menu to default values
     public void SetupMenu()
     {
         playerOneIndex = 0;
@@ -110,6 +118,7 @@ public class MainMenuHandler : ISceneSwap
         ChangeMenu();
     }
 
+    //use to update menu on weapon swap
     public void ChangeMenu()
     {
         playerOneName.text = weapons[playerOneIndex].weaponName;
@@ -119,7 +128,8 @@ public class MainMenuHandler : ISceneSwap
         playerTwoDisplay.sprite = weapons[playerTwoIndex].sprite;
     }
 
-    public void SelectWeapon(int player)//used to set weapon into static so it can be accessed by game scene
+    //used to set weapon into static so it can be accessed by game scene
+    public void SelectWeapon(int player)
     {
         if(player == 0)//if first player
         {

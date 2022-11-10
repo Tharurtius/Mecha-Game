@@ -46,4 +46,9 @@ public class Tackler : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    private void OnDestroy()
+    {
+        Instantiate(GameManager.explode, transform.position, Quaternion.identity);
+    }
 }

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0209c06586759664f89618ff305646a9, type: 3}
   m_Name: Player 2
   m_EditorClassIdentifier: 
-  left: 260
-  right: 262
-  up: 264
-  down: 261
+  left: 276
+  right: 275
+  up: 273
+  down: 274
   fire: 271

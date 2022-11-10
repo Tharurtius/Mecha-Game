@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class ISceneSwap : MonoBehaviour
 {
+    [SerializeField] protected Controls playerOneControls;
+    [SerializeField] protected Controls playerTwoControls;
+
     public void SwapScene(int sceneIndex)
     {
         SceneManager.LoadScene(sceneIndex);

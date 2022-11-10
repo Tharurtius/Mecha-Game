@@ -35,4 +35,8 @@ public class Shooter : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    private void OnDestroy()
+    {
+        Instantiate(GameManager.explode, transform.position, Quaternion.identity);
+    }
 }

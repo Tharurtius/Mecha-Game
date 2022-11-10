@@ -17,4 +17,4 @@ MonoBehaviour:
   model: {fileID: 7396707127974940261, guid: 27072ede226cc2b40b991304f2cb29c3, type: 3}
   hitbox: {fileID: 2016394442119431409, guid: 32a368224062463488cc56ccebe587e7, type: 3}
   cooldown: 2
-  lifeTime: 20
+  lifeTime: 30

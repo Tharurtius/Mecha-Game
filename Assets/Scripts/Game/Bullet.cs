@@ -22,7 +22,7 @@ public class Bullet : MonoBehaviour
         if (transform.tag == "EnemyAttack" && collision.transform.tag == "Sword")
         {
             transform.tag = "PlayerAttack";//turn into player attack
-            transform.forward = collision.transform.root.position - transform.position;//flies as an angle away from the sword
+            transform.forward = collision.transform.parent.position - transform.position;//flies as an angle away from the sword
         }
     }
 }
