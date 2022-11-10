@@ -50,7 +50,7 @@ MonoBehaviour:
   speed: 10
   _weapon: {fileID: 0}
   cooldown: 0
-  playerControls: {fileID: 11400000, guid: 18089942f01668f4ba48779c11e9770c, type: 2}
+  playerControls: {fileID: 11400000, guid: 647c9278ab5a15446a0150e3086f1dfc, type: 2}
 --- !u!136 &2224610385003692776
 CapsuleCollider:
   m_ObjectHideFlags: 0

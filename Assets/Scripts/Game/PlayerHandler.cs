@@ -8,7 +8,7 @@ public class PlayerHandler : MonoBehaviour
     [SerializeField] private float speed = 5;
     [SerializeField] private IWeapon _weapon;
     [SerializeField] private float cooldown = 0;
-    [SerializeField] private Controls playerControls;
+    [SerializeField] private ControlsV2 playerControls;
 
     public IWeapon Weapon
     {
@@ -28,11 +28,9 @@ public class PlayerHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float vertical = Convert.ToSingle(Input.GetKey(playerControls.down)) - Convert.ToSingle(Input.GetKey(playerControls.up));
-        float horizontal = Convert.ToSingle(Input.GetKey(playerControls.right)) - Convert.ToSingle(Input.GetKey(playerControls.left));
-        Vector3 vector = new Vector3(vertical, 0, horizontal);
+        Vector3 vector = new Vector3(Input.GetAxis(playerControls.vertical), 0, Input.GetAxis(playerControls.horizontal));
         Move(vector);
-        if (Input.GetKey(playerControls.fire) && cooldown <= 0)
+        if (Input.GetButton(playerControls.fire) && cooldown <= 0)
         {
             _weapon.Attack(transform);
             cooldown = _weapon.cooldown;

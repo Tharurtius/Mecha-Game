@@ -28,6 +28,9 @@ public class MainMenuHandler : ISceneSwap
     [SerializeField] private Color red;
     [SerializeField] private Color white;
 
+    [SerializeField] private ControlsV2 playerOneControls;
+    [SerializeField] private ControlsV2 playerTwoControls;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,17 +46,17 @@ public class MainMenuHandler : ISceneSwap
         {
             if(playerOneWeapon == null)//if no weapon selected
             {
-                if(Input.GetKeyDown(playerOneControls.left))//if left is pressed
+                if (Input.GetButtonDown("P1 R2"))//if middle is pressed
                 {
                     ChangeWeapon(false, ref playerOneIndex);
                 }
-                if(Input.GetKeyDown(playerOneControls.right))//if right is pressed
+                if (Input.GetButtonDown("P1 R3"))//if right is pressed
                 {
                     ChangeWeapon(true, ref playerOneIndex);
                 }
             }
             
-            if(Input.GetKeyDown(playerOneControls.fire))//if space is pressed
+            if(Input.GetButtonDown(playerOneControls.fire))//if space is pressed
             {
                 if(playerOneWeapon == null)//if no weapon is selected
                 {
@@ -75,17 +78,17 @@ public class MainMenuHandler : ISceneSwap
         {
             if(playerTwoWeapon == null)//if no weapon selected
             {
-                if(Input.GetKeyDown(playerTwoControls.left))//if left is pressed
+                if (Input.GetButtonDown("P2 R2"))//if left is pressed
                 {
                     ChangeWeapon(false, ref playerTwoIndex);
                 }
-                if(Input.GetKeyDown(playerTwoControls.right))//if right is pressed
+                if (Input.GetButtonDown("P2 R3"))//if right is pressed
                 {
                     ChangeWeapon(true, ref playerTwoIndex);
                 }
             }
-            
-            if(Input.GetKeyDown(playerTwoControls.fire))//if space is pressed
+
+            if (Input.GetButtonDown(playerTwoControls.fire))//if space is pressed
             {
                 if(playerTwoWeapon == null)//if no weapon is selected
                 {
