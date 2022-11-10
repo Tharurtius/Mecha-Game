@@ -28,7 +28,7 @@ public class PlayerHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 vector = new Vector3(Input.GetAxis(playerControls.vertical), 0, Input.GetAxis(playerControls.horizontal));
+        Vector3 vector = new Vector3(-Input.GetAxis(playerControls.vertical), 0, Input.GetAxis(playerControls.horizontal));
         Move(vector);
         if (Input.GetButton(playerControls.fire) && cooldown <= 0)
         {
