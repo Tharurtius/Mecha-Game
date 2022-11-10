@@ -8,12 +8,12 @@ public class Explosion : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Destroy(root, 0.6f);
+        Destroy(root, 0.5f);
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        transform.localScale *= 1.1f;
+        transform.localScale += new Vector3(0.2f, 0.2f, 0.2f);
     }
 }

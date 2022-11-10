@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         spawnCountdown -= Time.deltaTime;
-        if (spawnCountdown <= 0)
+        if (spawnCountdown <= 0 && living.Count > 0)
         {
             spawnCooldown *= 0.9f;
             spawnCooldown = Math.Max(spawnCooldown, 1);

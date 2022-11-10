@@ -38,17 +38,14 @@ public class Tackler : MonoBehaviour
     {
         if (collision.transform.tag == "Sword")
         {
+            Instantiate(GameManager.explode, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
         else if (collision.transform.tag == "PlayerAttack")
         {
+            Instantiate(GameManager.explode, transform.position, Quaternion.identity);
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }
-    }
-
-    private void OnDestroy()
-    {
-        Instantiate(GameManager.explode, transform.position, Quaternion.identity);
     }
 }

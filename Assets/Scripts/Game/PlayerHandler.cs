@@ -59,6 +59,7 @@ public class PlayerHandler : MonoBehaviour
     {
         if (collision.transform.tag == "EnemyAttack" || collision.transform.tag == "Poison")
         {
+            Instantiate(GameManager.explode, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }

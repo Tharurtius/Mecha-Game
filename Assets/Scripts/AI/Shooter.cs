@@ -13,6 +13,7 @@ public class Shooter : MonoBehaviour
     void Start()
     {
         initialX = transform.position.x;
+        timePassed += Random.Range(-5f, 5f);
     }
 
     // Update is called once per frame
@@ -27,16 +28,14 @@ public class Shooter : MonoBehaviour
     {
         if (collision.transform.tag == "Sword")
         {
+            Instantiate(GameManager.explode, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
         else if (collision.transform.tag == "PlayerAttack")
         {
+            Instantiate(GameManager.explode, transform.position, Quaternion.identity);
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }
-    }
-    private void OnDestroy()
-    {
-        Instantiate(GameManager.explode, transform.position, Quaternion.identity);
     }
 }
