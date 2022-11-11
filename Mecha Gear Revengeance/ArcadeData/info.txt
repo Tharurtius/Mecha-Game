@@ -1,0 +1,9 @@
+FullName="Mecha Gear: Revengeance"
+DeveloperNames="Michael Yee, logo by Chris Hollobon"
+DevType="Diploma" // Cert4 Diploma AdvancedDiploma Teacher Alumni //
+Year="2022"
+Players="2"
+ExeName="Mecha-Game.exe"
+Col1="#0000C8"
+Col2="#000000"
+Col3="#df0000"
