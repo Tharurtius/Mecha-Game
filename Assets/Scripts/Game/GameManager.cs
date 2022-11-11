@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Camera mainCam;
     public static float edgeX;
     public static float edgeZ;
+    [SerializeField] private float timePassed = 0f;
     [SerializeField] private float spawnEdge;
     [SerializeField] private GameObject[] enemies;
     [SerializeField] private float spawnCooldown = 10;//how long until next spawn
@@ -23,6 +24,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private TextMeshProUGUI displayText;
     [SerializeField] private GameObject resumeButton;
+    [SerializeField] private TextMeshProUGUI timer;
 
     [SerializeField] private GameObject explosion;
     public static GameObject explode;
@@ -69,6 +71,9 @@ public class GameManager : MonoBehaviour
         {
             EndGame();
         }
+
+        timePassed += Time.deltaTime;
+        timer.text = timePassed.ToString("0.0");
     }
 
     void SpawnEnemies(int number)

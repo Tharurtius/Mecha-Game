@@ -21,7 +21,7 @@ public class Shooter : MonoBehaviour
     {
         timePassed += Time.deltaTime;
         float z = transform.position.z;
-        transform.position = new Vector3(initialX + Mathf.Sin(timePassed) * distance, 0, Mathf.Max(GameManager.edgeZ, z - 0.005f));
+        transform.position = new Vector3(initialX + Mathf.Sin(timePassed) * distance, 0, Mathf.Max(GameManager.edgeZ, z - 0.2f * Time.deltaTime));
     }
 
     private void OnCollisionEnter(Collision collision)

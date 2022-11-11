@@ -111,4 +111,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  playerAttacks: {fileID: 2100000, guid: 8fae30e4b94b372409a5003557500817, type: 2}
+  skin: {fileID: 2100000, guid: 8fae30e4b94b372409a5003557500817, type: 2}

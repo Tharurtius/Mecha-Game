@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private float speed = 5f;
+    [SerializeField] private Material skin;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +24,7 @@ public class Bullet : MonoBehaviour
         {
             transform.tag = "PlayerAttack";//turn into player attack
             transform.forward = collision.transform.parent.position - transform.position;//flies as an angle away from the sword
+            GetComponent<Renderer>().material = skin;
         }
     }
 }
